@@ -50,7 +50,7 @@ def k_mean_find(dataset, f) -> (int, float, float):
 #
 # Note : chaque exemple du jeu de donnees contient aussi un
 # numero de cluster . On retire cette information
-path = './clustering-benchmark/src/main/resources/datasets/artificial/'
+path = './tp-clustering/clustering-benchmark/src/main/resources/datasets/artificial/'
 # Datasets intéressants : blobs.arff (k = 3)/fourty (k = 40)/zelnik4 (k = 4)
 databrut = arff.loadarff(open(path + "smile3.arff", 'r'))
 datanp = np.array([[x[0], x[1]] for x in databrut[0]])

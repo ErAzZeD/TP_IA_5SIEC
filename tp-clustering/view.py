@@ -14,8 +14,8 @@ from scipy.io import arff
 
 # Note : chaque exemple du jeu de donnees contient aussi un
 # numero de cluster . On retire cette information
-path = './clustering-benchmark/src/main/resources/datasets/artificial/'
-databrut = arff.loadarff(open(path + "xclara.arff", 'r'))
+path = './tp-clustering/clustering-benchmark/src/main/resources/datasets/artificial/'
+databrut = arff.loadarff(open(path + "spiral.arff", 'r'))
 datanp = np.array([[x[0], x[1]] for x in databrut[0]])
 # Affichage en 2D
 # Extraire chaque valeur de features pour en faire une liste

@@ -9,7 +9,7 @@ from scipy.io import arff
 # f0 : valeurs sur la premiere dimension
 # f1 : valeur sur la deuxieme dimension
 #
-path = './clustering-benchmark/src/main/resources/datasets/artificial/'
+path = './tp-clustering/clustering-benchmark/src/main/resources/datasets/artificial/'
 databrut = arff.loadarff(open(path + "spiral.arff", 'r'))
 datanp = np.array([[x[0], x[1]] for x in databrut[0]])
 f0 = datanp[:, 0]  # tous les elements de la premiere colonne

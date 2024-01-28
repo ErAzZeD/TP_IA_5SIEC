@@ -41,7 +41,7 @@ def find_min_dist(dataset, f):
 
     bounds = (0.001, 0.6)
     current_time = time.time()
-        min_dist = minimize_scalar(distance_loss, bounds=bounds).x
+    min_dist = minimize_scalar(distance_loss, bounds=bounds).x
     end_time = time.time()
     executing_time = end_time - current_time
 
@@ -70,9 +70,9 @@ def loop_cluster(data, f):
     return distance_threashold_max/100, score_max, end - start, nb_clusters_max
 
 
-path = './clustering-benchmark/src/main/resources/datasets/artificial/'
+path = './tp-clustering/clustering-benchmark/src/main/resources/datasets/artificial/'
 # Datasets intéressants : blobs.arff (k = 3)/fourty (k = 40)/zelnik4 (k = 4)
-databrut = arff.loadarff(open(path + "complex9.arff", 'r'))
+databrut = arff.loadarff(open(path + "spiral.arff", 'r'))
 datanp = np.array([[x[0], x[1]] for x in databrut[0]])
 f0 = datanp[:, 0]  # tous les elements de la premiere colonne
 f1 = datanp[:, 1]  # tous les elements de la deuxieme colonne
@@ -86,7 +86,7 @@ plt.show()
 
 # set distance_threshold (0 ensures we compute the full tree)
 tps1 = time.time()
-model = AgglomerativeClustering(distance_threshold=12, linkage='single', n_clusters=None)
+model = AgglomerativeClustering(distance_threshold=1, linkage='single', n_clusters=None)
 model = model.fit(datanp)
 tps2 = time.time()
 labels = model.labels_

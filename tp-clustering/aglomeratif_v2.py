@@ -71,21 +71,21 @@ def loop_cluster(data, f):
 
 path = './tp-clustering/clustering-benchmark/src/main/resources/datasets/artificial/'
 # Datasets intéressants : blobs.arff (k = 3)/fourty (k = 40)/zelnik4 (k = 4)
-databrut = arff.loadarff(open(path + "blobs.arff", 'r'))
+databrut = arff.loadarff(open(path + "zelnik4.arff", 'r'))
 datanp = np.array([[x[0], x[1]] for x in databrut[0]])
 f0 = datanp[:, 0]  # tous les elements de la premiere colonne
 f1 = datanp[:, 1]  # tous les elements de la deuxieme colonne
 
 # Donnees dans datanp
 print("Dendrogramme 'single' donnees initiales")
-linked_mat = shc.linkage(datanp, 'single')
+linked_mat = shc.linkage(datanp, 'complete')
 plt.figure(figsize=(12, 12))
 shc.dendrogram(linked_mat, orientation='top', distance_sort='descending', show_leaf_counts=False)
 plt.show()
 
 # set distance_threshold (0 ensures we compute the full tree)
 tps1 = time.time()
-model = AgglomerativeClustering(distance_threshold=1, linkage='single', n_clusters=None)
+model = AgglomerativeClustering(linkage='single', n_clusters=6)
 model = model.fit(datanp)
 tps2 = time.time()
 labels = model.labels_
