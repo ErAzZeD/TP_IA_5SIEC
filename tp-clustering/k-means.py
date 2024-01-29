@@ -9,9 +9,13 @@ from scipy.io import arff
 # f0 : valeurs sur la premiere dimension
 # f1 : valeur sur la deuxieme dimension
 #
-path = './tp-clustering/clustering-benchmark/src/main/resources/datasets/artificial/'
-databrut = arff.loadarff(open(path + "spiral.arff", 'r'))
-datanp = np.array([[x[0], x[1]] for x in databrut[0]])
+#path = './tp-clustering/clustering-benchmark/src/main/resources/datasets/artificial/'
+#databrut = arff.loadarff(open(path + "spiral.arff", 'r'))
+path = './tp-clustering/dataset-rapport/'
+databrut = [x.split() for x in open(path + "x1.txt", 'r').read().split('\n')][:-2]
+datanp = np.array([[int(x[0]), int(x[1])] for x in databrut])
+
+#datanp = np.array([[x[0], x[1]] for x in databrut[0]])
 f0 = datanp[:, 0]  # tous les elements de la premiere colonne
 f1 = datanp[:, 1]  # tous les elements de la deuxieme colonne
 plt.scatter(f0, f1, s=8)

@@ -71,7 +71,7 @@ def loop_cluster(data, f):
 
 path = './tp-clustering/clustering-benchmark/src/main/resources/datasets/artificial/'
 # Datasets intéressants : blobs.arff (k = 3)/fourty (k = 40)/zelnik4 (k = 4)
-databrut = arff.loadarff(open(path + "blobs.arff", 'r'))
+databrut = arff.loadarff(open(path + "spiral.arff", 'r'))
 datanp = np.array([[x[0], x[1]] for x in databrut[0]])
 f0 = datanp[:, 0]  # tous les elements de la premiere colonne
 f1 = datanp[:, 1]  # tous les elements de la deuxieme colonne
