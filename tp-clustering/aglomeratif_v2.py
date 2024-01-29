@@ -6,7 +6,7 @@ from sklearn.cluster import AgglomerativeClustering
 import matplotlib.pyplot as plt
 from scipy.optimize import minimize_scalar
 from sklearn.metrics import silhouette_score, calinski_harabasz_score, davies_bouldin_score, euclidean_distances
-
+import pandas
 
 def k_agglo_find(dataset, f) -> (int, float, float):
     current_time = time.time()
@@ -69,10 +69,13 @@ def loop_cluster(data, f):
     return distance_threashold_max/100, score_max, end - start, nb_clusters_max
 
 
-path = './tp-clustering/clustering-benchmark/src/main/resources/datasets/artificial/'
+# path = './tp-clustering/clustering-benchmark/src/main/resources/datasets/artificial/'
 # Datasets intéressants : blobs.arff (k = 3)/fourty (k = 40)/zelnik4 (k = 4)
-databrut = arff.loadarff(open(path + "zelnik4.arff", 'r'))
-datanp = np.array([[x[0], x[1]] for x in databrut[0]])
+# databrut = arff.loadarff(open(path + "zelnik4.arff", 'r'))
+path = './tp-clustering/dataset-rapport/'
+databrut = [x.split() for x in open(path + "x1.txt", 'r').read().split('\n')][:-2]
+datanp = np.array([[int(x[0]), int(x[1])] for x in databrut])
+#datanp = np.array([[int(x[0]), int(x[1])] for x in databrut[0]])
 f0 = datanp[:, 0]  # tous les elements de la premiere colonne
 f1 = datanp[:, 1]  # tous les elements de la deuxieme colonne
 
